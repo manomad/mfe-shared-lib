@@ -1,20 +1,20 @@
 import React from "react";
 import { DeviceGroupSchema } from "../types/deviceGroupSchema";
 import { deviceGroupSchemaData } from "../utils/data";
-import DeviceGroupSchemaContext from "./DeviceGroupSchemaContext";
+import { DeviceGroupSchemaContext } from "./DeviceGroupSchemaContext";
 
 interface DeviceGroupSchemaContextProviderProps {
   children?: any;
 }
 
-export default function DeviceGroupSchemaContextProvider(
+export function DeviceGroupSchemaContextProvider(
   props: DeviceGroupSchemaContextProviderProps
 ) {
   const { children } = props;
 
   const [existingDeviceGroups, setExistingDeviceGroups] = React.useState<
     string[]
-  >([]);
+  >(["BLK", "GNSS Antennas", "Total Station"]);
 
   const [existingDeviceGroupIds, setExistingDeviceGroupIds] = React.useState<
     string[]

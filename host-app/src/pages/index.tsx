@@ -1,4 +1,7 @@
-import { NameContextProvider } from "shared-library";
+import {
+  NameContextProvider,
+  DeviceGroupSchemaContextProvider,
+} from "shared-library";
 import React from "react";
 
 const HeaderA = React.lazy(() => import("remote/HeaderA"));
@@ -10,12 +13,14 @@ export default function Home() {
       <div>
         <h1>Shared Context Provider</h1>
         <h2>HOST App</h2>
-        <NameContextProvider.Provider value="Billy">
-          <React.Suspense fallback="Loading Name">
+        <React.Suspense fallback="Loading Name">
+          <NameContextProvider.Provider value="Billy">
             <HeaderA />
+          </NameContextProvider.Provider>
+          <DeviceGroupSchemaContextProvider>
             <HeaderB />
-          </React.Suspense>
-        </NameContextProvider.Provider>
+          </DeviceGroupSchemaContextProvider>
+        </React.Suspense>
       </div>
     </>
   );

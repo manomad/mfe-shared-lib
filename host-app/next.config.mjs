@@ -10,6 +10,7 @@ const remotes = (isServer) => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ['shared-library'],
   reactStrictMode: true,
   webpack(config, { isServer }) {
     config.plugins.push(
@@ -21,9 +22,11 @@ const nextConfig = {
           // Host app also can expose modules
         },
         shared: {
-            'shared-library': {
-              import: '../shared-library',
-            },
+          'shared-library': {
+            import: '../shared-library/src',
+            requiredVersion: "1.0.0.0",
+            singleton: true,
+          },
         },
       })
     );
